@@ -1,0 +1,21 @@
+//likes
+
+likesTxt = document.getElementById("likes");
+
+let likes = localStorage.getItem("likes") ? parseInt(localStorage.getItem("likes")) : 0;
+let hasLiked = localStorage.getItem("hasLiked") === "true";
+
+likesTxt.textContent = `👍 ${likes}`;
+
+function addALike() {
+    if (!hasLiked) {
+        likes += 1;
+        localStorage.setItem("likes", likes);
+        localStorage.setItem("hasLiked", "true");
+        likesTxt.textContent = `👍 ${likes}`;
+        hasLiked = true;
+        likesTxt.style.animation = "liked 1s";
+    } else {
+        window.alert("You have already liked this page!");
+    }
+}
